@@ -3,4 +3,4 @@ Surprisingly, it is possible to solve the problem in O(n) time, which means that
 Consider the subproblem of finding the maximum-sum subarray that ends at position k. There are two possibilities:
 1. The subarray only contains the element at position k.
 2. The subarray consists of a subarray that ends at position k −1, followed by the element at position k.
-In the latter case, since we want to find a subarray with maximum sum, the subarray that ends at position k −1 should also have the maximum sum. Thus, we can solve the problem  efficiently by calculating the maximum subarray sum for each ending position from left to right.
+In the latter case, since we want to find a subarray with maximum sum, the subarray that ends at position k −1 should also have the maximum sum. Thus, we can solve the problem  efficiently by calculating the maximum subarray sum for each ending position from left to right.   
