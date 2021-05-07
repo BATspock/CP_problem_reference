@@ -1,16 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+void printArray(vector<int> v){
+    for (int i =0;i<v.size();i++){
+        cout<< v[i] << " ";
+    }
+    cout<<"\n";
+}
+
 int returnNumberofWays(int N, vector<int> coins){
     vector<int> ways(N+1);
     ways[0]=1;
 
     for(int i = 0; i<coins.size();i++){
         for (int j =0;j<ways.size();j++){
-            if(coins[i] <= j){
+            if(j>=coins[i]){
                 ways[j]+=ways[j - coins[i]];
             }
         }
+        printArray(ways);
     }
     return ways[N];
 
