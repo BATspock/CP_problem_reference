@@ -2,8 +2,18 @@
 
 using namespace std;
 
+int convertonumber(valarray<int> a){
+    int num = 0;
+
+    for (int i = 0;i<a.size();i++) num+= pow(2, a.size()-i-1)*a[i];
+    //cout<<num << endl;
+    return num;
+
+}
+
 int countsubgrids(vector<vector<int>> v, int n){
     int subgrids = 0;
+    int val;
     for (int r1 =0;r1 < n;r1++){
         vector<int> x = vector<int>(v[r1].begin(), v[r1].begin() + n);
         int hit = 0;
@@ -14,13 +24,15 @@ int countsubgrids(vector<vector<int>> v, int n){
 
             valarray<int> test1(x.data(), x.size());
             valarray<int> test2(y.data(), y.size());
-            
-            hit =__builtin_popcount(test1&test2);
-            
-            }        
+            //valarray<int> test3 = test1 & test2;
+            val = convertonumber(test1 & test2);
+            hit = __builtin_popcount(val);
+            //cout<<" hit: "<<hit<< " with val: "<<val;
             subgrids+=((hit*(hit-1))/2);
+            }        
+            
+            //cout<<" --> value of subgrid: "<<subgrids<<endl;
         } 
-    }
     return subgrids;
 }
 
