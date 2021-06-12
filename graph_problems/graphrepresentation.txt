@@ -1,0 +1,17 @@
+Adjacency list representation
+In the adjacency list representation, each node x in the graph is assigned an
+adjacency list that consists of nodes to which there is an edge from x. Adjacency
+lists are the most popular way to represent graphs, and most algorithms can be
+efficiently implemented using them.
+
+Adjacency matrix representation
+An adjacency matrix is a two-dimensional array that indicates which edges
+the graph contains. We can efficiently check from an adjacency matrix if there is
+an edge between two nodes. The matrix can be stored as an array
+
+Edge list representation
+An edge list contains all edges of a graph in some order. This is a convenient
+way to represent a graph if the algorithm processes all edges of the graph and it
+is not needed to find edges that start at a given node.
+
+
