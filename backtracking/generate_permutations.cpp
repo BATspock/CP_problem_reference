@@ -24,8 +24,8 @@ int main(){
     vector<int> nums{1, 2, 3};
     vector<vector<int>> ans;
 
-    Permutations *obj = new Permutations();
-    ans = obj->permute(nums);
+    Permutations obj;
+    ans = obj.permute(nums);
     cout<<"[";
     for (int i = 0; i<ans.size();i++){
         cout<<"[";
