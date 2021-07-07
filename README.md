@@ -4,3 +4,8 @@ competitive programming with C++
 I am trying to create a repository which contains a reference code in C++ for most common competetive programming questions.
 
 More for indepth study you can refer my recommended book here: https://cses.fi/book/book.pdf
+
+executed on windows using c++17:
+```
+g++ -std=c++17 .\filename.cpp
+```
