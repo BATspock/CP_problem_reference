@@ -4,9 +4,13 @@ class Heapify{
 
     public:
     std::vector<int> heapify(std::vector<int> arr){
-        std:: vector<int> ans;
-
+        std:: vector<int> ans(arr);
         //complete heapify bottom up 
+
+        std::cout<<ans.size();
+
+
+
 
     return ans;
 
