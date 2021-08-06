@@ -1,16 +1,51 @@
 #include<bits/stdc++.h>
 
+using namespace std;
+
 class Heapify{
 
     public:
+
+    void create_heap(std::vector<int> &a, int index){
+
+        if (2*index+1 >= a.size()) return;
+        
+        int parent = a[index];
+        int left_val = a[2*(index) + 1];
+        int right_val = INT_MIN;
+
+        if (2*index + 2 < a.size()) {right_val = a[2*index + 2];}
+
+        int biggest_child = std::max(left_val, right_val);
+        int parent_node = std::max(parent, biggest_child);
+
+        if (parent_node == left_val){
+            a[2*index +1] = parent;
+            a[index] = left_val;
+            create_heap(a, 2*index + 1);
+        }
+
+        if (parent_node == right_val){
+            a[2*index +2] = parent;
+            a[index] = right_val;
+            create_heap(a, 2*index + 2);
+        }
+
+        return;
+
+    }
+
     std::vector<int> heapify(std::vector<int> arr){
+        
         std:: vector<int> ans(arr);
         //complete heapify bottom up 
+        for (int i = ans.size()-1;i>=0;i--){
 
-        std::cout<<ans.size();
+            create_heap(ans,i);            
+   
+        }
 
-
-
+        
 
     return ans;
 
