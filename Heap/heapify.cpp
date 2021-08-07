@@ -1,57 +1,54 @@
 #include<bits/stdc++.h>
+#include "heapify.hpp"
 
 using namespace std;
 
-class Heapify{
+void Heapify::create_heap(std::vector<int> &a, int index){
 
-    public:
+    if (2*index+1 >= a.size()) return;
+    
+    int parent = a[index];
+    int left_val = a[2*(index) + 1];
+    int right_val = INT_MIN;
 
-    void create_heap(std::vector<int> &a, int index){
+    if (2*index + 2 < a.size()) {right_val = a[2*index + 2];}
 
-        if (2*index+1 >= a.size()) return;
+    int biggest_child = std::max(left_val, right_val);
+    int parent_node = std::max(parent, biggest_child);
+
+    if (parent_node == left_val){
+        a[2*index +1] = parent;
+        a[index] = left_val;
+        create_heap(a, 2*index + 1);
+    }
+
+    if (parent_node == right_val){
+        a[2*index +2] = parent;
+        a[index] = right_val;
+        create_heap(a, 2*index + 2);
+    }
+
+    return;
+
+}
+
+std::vector<int> Heapify::heapify(std::vector<int> arr){
         
-        int parent = a[index];
-        int left_val = a[2*(index) + 1];
-        int right_val = INT_MIN;
+    std:: vector<int> ans(arr);
+    //complete heapify bottom up 
+    for (int i = ans.size()-1;i>=0;i--){
 
-        if (2*index + 2 < a.size()) {right_val = a[2*index + 2];}
-
-        int biggest_child = std::max(left_val, right_val);
-        int parent_node = std::max(parent, biggest_child);
-
-        if (parent_node == left_val){
-            a[2*index +1] = parent;
-            a[index] = left_val;
-            create_heap(a, 2*index + 1);
-        }
-
-        if (parent_node == right_val){
-            a[2*index +2] = parent;
-            a[index] = right_val;
-            create_heap(a, 2*index + 2);
-        }
-
-        return;
+        create_heap(ans,i);            
 
     }
 
-    std::vector<int> heapify(std::vector<int> arr){
-        
-        std:: vector<int> ans(arr);
-        //complete heapify bottom up 
-        for (int i = ans.size()-1;i>=0;i--){
+    
 
-            create_heap(ans,i);            
-   
-        }
+return ans;
 
-        
+}
 
-    return ans;
-
-    }
-};
-
+/*
 int main(){
     std::vector<int> arr {4, 6, 2, 4, 1, 7, 10, 5};
 
@@ -72,3 +69,4 @@ int main(){
 
     return 0;
 }
+*/
