@@ -16,6 +16,19 @@ public:
         }
         std::cout<<'\n';
     }
+
+    std::vector<int> hapifyarray(){
+        Heapify obj;
+        return obj.heapify(this->ar);
+    }
+
+    int delete_top_and_return(){
+
+        int var = this->ar.front()
+        this->ar.erase(this->ar.begin());
+        return var;
+
+    }
 };
 
 
@@ -23,8 +36,7 @@ int main(){
 
     std::vector<int> arr {4, 6, 2, 4, 1, 7, 10, 5};
 
-    Heapify obj;
-    std::vector<int> a = obj.heapify(arr);
+    
 
     std::cout<<"\nAfter heapify: \n";
 
