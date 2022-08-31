@@ -44,3 +44,6 @@ def isRect(a, b) -> int :
                         print('$$$$$$')
                         count+=1
     print(count)
+
+    
+isRect(a,b)
