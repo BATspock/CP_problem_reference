@@ -15,11 +15,13 @@ def blur_image(image, radius):
             neighbors = get_neighbors(image, i, j, radius)
             #compute the mean of the neighbors
             #print(neighbors)
-            mean = sum(neighbors) / len(neighbors)
-            #compute the blurred value
-            blurred_value = int((image[i][j] + mean) // 2)
-            #add the blurred value to the new image
-            new_image[i].append(blurred_value)
+            #if no neighbors, the blurred value is the value of the pixel
+            if len(neighbors) == 0:
+                new_image[i].append(image[i][j])
+            else:
+                #the blurred value is value of the pixel (i,j) plus the mean of the negihbors pixels divide by 2
+                new_image[i].append(int((image[i][j] + sum(neighbors) / len(neighbors)) // 2))
+           
     return new_image
 
 def get_neighbors(image, i, j, radius):
@@ -44,6 +46,10 @@ radius = 1
 
 image1 = [[0,0,0],[0,255,0],[0,0,0]]
 radius1 = 2
+
+image2 = [[255]]
+radius2 = 1
 print(blur_image(image, radius))
 print(blur_image(image1, radius1))
+print(blur_image(image2, radius2))
 
