@@ -24,4 +24,30 @@ public:
     }
 };
 
+Java
 
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+       Map<Integer, Integer> myMap= new HashMap<>(); 
+        int[] ans = new int[2];
+        
+       for (int i =0;i<nums.length;i++){
+           myMap.put(nums[i], i);
+       }
+
+       for ( int i =0;i<nums.length;i++){
+           int k = target -nums[i];
+           if (myMap.containsKey(k)){
+               if (myMap.get(k)==i ) continue;
+               else {
+                   ans[0] = i;
+                   ans[1] = myMap.get(k);
+
+                   return ans;
+               }
+           }
+       }
+
+       return ans;
+    }
+}
