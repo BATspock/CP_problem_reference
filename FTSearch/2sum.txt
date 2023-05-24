@@ -1,0 +1,27 @@
+# Leetcode 2 Sum https://leetcode.com/problems/two-sum/submissions/
+
+C++
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> ans(2);
+        unordered_map<int, int> mp;
+        for (int i =0;i<nums.size();i++){
+            mp[nums[i]]=i;
+        }
+        
+        for (int i =0;i<nums.size();i++){
+            int k = target-nums[i];
+            auto it = mp.find(k);
+            if (it!=mp.end()) {
+                if (mp[k] == i) continue;
+                else return {i, mp[k]};
+            }
+        }
+        
+        return {0,0};
+    }
+};
+
+
