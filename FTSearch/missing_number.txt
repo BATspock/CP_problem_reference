@@ -1,0 +1,13 @@
+268. Missing Number
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n = nums.size();
+        int expected_sum = (n*(n+1))/2;
+
+        int total = accumulate(nums.begin(), nums.end(), 0);
+
+        return expected_sum-total;
+    }
+};
