@@ -45,3 +45,62 @@ public:
         return true;
     }
 };
+
+java:
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        Stack<TreeNode> tree1= new Stack<>();
+        Stack<TreeNode> tree2= new Stack<>();
+        ArrayList<Integer> leaf1= new ArrayList<>();
+        ArrayList<Integer> leaf2= new ArrayList<>();
+
+        if (root1!=null) {tree1.push(root1);}
+        if (root2!=null) {tree2.push(root2);}
+
+        while(!tree1.isEmpty()){
+            TreeNode cur = tree1.peek();
+            tree1.pop();
+            if (cur.right==null && cur.left==null) leaf1.add(cur.val);
+            if (cur.left!=null) tree1.push(cur.left);
+            if (cur.right!=null) tree1.push(cur.right);
+
+        }
+
+        while(!tree2.isEmpty()){
+            TreeNode cur = tree2.peek();
+            tree2.pop();
+            if (cur.right==null && cur.left==null) leaf2.add(cur.val);
+            if (cur.left!=null) tree2.push(cur.left);
+            if (cur.right!=null) tree2.push(cur.right);
+
+        }
+
+        if (leaf1.size() != leaf2.size()) {return false;}
+
+        for (int i =0;i<leaf1.size();i++){
+            if (leaf1.get(i)!=leaf2.get(i)){
+                return false;
+            }
+        }
+
+        return true;
+
+
+    }
+}
